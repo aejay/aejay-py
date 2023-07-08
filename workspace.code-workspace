@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "aejay-desktop-automations"
+    }
+  ],
+  "settings": {
+    "cSpell.words": [
+      "pyrsistent",
+      "reqs"
+    ]
+  }
+}
