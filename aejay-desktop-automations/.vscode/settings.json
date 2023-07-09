@@ -12,5 +12,6 @@
     "pystray",
     "userdata",
     "websockets"
-  ]
+  ],
+  "python.analysis.typeCheckingMode": "basic"
 }

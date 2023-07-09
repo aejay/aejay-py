@@ -7,6 +7,12 @@ class MacFunkifier(Funkifier):
     def __init__(self):
         self._has_brightness = not shutil.which('brightness') is None
 
+    def start(self):
+       pass
+
+    def stop(self):
+       pass
+
     def funkify_screen(self, state: FunkyState):
         if state == FunkyState.NORMAL:
           applescript = """

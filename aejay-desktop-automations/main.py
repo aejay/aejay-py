@@ -19,11 +19,11 @@ def main():
     
     funkifier.start()
     
-    mqtt_url = os.environ.get("AEJAY_MQTT_URL")
-    cred_name = os.environ.get("AEJAY_MQTT_CRED")
-    update_topic = os.environ.get("AEJAY_MQTT_UPDATE_TOPIC")
-    request_topic = os.environ.get("AEJAY_MQTT_REQUEST_TOPIC")
-    machine_type = os.environ.get("AEJAY_TYPE")
+    mqtt_url = os.environ.get("AEJAY_MQTT_URL") or ""
+    cred_name = os.environ.get("AEJAY_MQTT_CRED") or ""
+    update_topic = os.environ.get("AEJAY_MQTT_UPDATE_TOPIC") or ""
+    request_topic = os.environ.get("AEJAY_MQTT_REQUEST_TOPIC") or ""
+    machine_type = os.environ.get("AEJAY_TYPE") or "WorkMachine"
     is_work_machine = machine_type == "WorkMachine"
 
     def icon_change_handler(state: FunkyState):

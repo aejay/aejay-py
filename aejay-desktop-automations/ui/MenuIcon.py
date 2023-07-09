@@ -1,6 +1,6 @@
 from pystray import Icon, Menu, MenuItem
 from PIL import Image, ImageDraw
-from typing import Callable, List
+from typing import Callable, List, cast
 from screen_management import FunkyState
 
 def _empty_callback():
@@ -28,7 +28,7 @@ class MenuIcon:
         ))
 
     def set_funkiness(self, state: FunkyState) -> None:
-        for item in self.icon.menu:
+        for item in cast(List[MenuItem], self.icon.menu):
             if item.text == state.value:
                 self._on_option_selected(self.icon, item)
                 return

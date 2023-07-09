@@ -1,7 +1,7 @@
 import ctypes
 import time
 import threading
-from typing import Callable, TypedDict
+from typing import Callable, Dict
 from .Funkifier import Funkifier
 from .FunkyState import FunkyState
 
@@ -22,11 +22,7 @@ mag_set_fullscreen_color_effect.restype = ctypes.c_bool
 mag_initialize.restype = ctypes.c_bool
 mag_uninitialize.restype = ctypes.c_bool
 
-class FunkyEffectDict(TypedDict):
-    key: FunkyState
-    value: MagColorEffectType
-
-funky_effect_map: FunkyEffectDict = {
+funky_effect_map: Dict[FunkyState, MagColorEffectType] = {
     FunkyState.NORMAL: MagColorEffectType(
         +1.0, +0.0, +0.0, +0.0, +0.0,
         +0.0, +1.0, +0.0, +0.0, +0.0,

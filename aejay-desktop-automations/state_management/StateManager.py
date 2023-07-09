@@ -12,7 +12,7 @@ class StateManager:
         mqtt_password: str,
         mqtt_update_topic_name: str,
         mqtt_request_topic_name: str,
-        on_update: Callable[[RemoteState], None] = None
+        on_update: Callable[[RemoteState], None] = lambda _: None
     ) -> None:
         self.mqtt_server_url = mqtt_server_url
         self.mqtt_update_topic_name = mqtt_update_topic_name
@@ -33,8 +33,8 @@ class StateManager:
         client: mqtt.Client,
         userdata: object,
         flags: dict,
-        rc: int,
-        properties: mqtt.Properties
+        rc: mqtt.ReasonCodes,
+        properties: mqtt.Properties | None
     ) -> None:
         if rc == 0:
             print("Connected to MQTT broker")
@@ -42,7 +42,6 @@ class StateManager:
             client.publish(self.mqtt_request_topic_name)
         else:
             print(f"Connection to MQTT failed with result {rc}")
-            pprint(properties.json())
 
     def _on_message(
         self,
