@@ -1,6 +1,5 @@
 from paho.mqtt import client as mqtt
 from typing import Callable
-from pprint import pprint
 import ssl
 from .RemoteState import RemoteState
 
@@ -21,10 +20,10 @@ class StateManager:
 
         self.client = mqtt.Client(client_id="aejay-python", transport="websockets", protocol=mqtt.MQTTv5)
         self.client.ws_set_options(path="/")       
-        self.client.tls_set(tls_version=ssl.PROTOCOL_TLSv1_2, cert_reqs=ssl.CERT_NONE)
-        self.client.tls_insecure_set(True)
+        self.client.tls_set(tls_version=ssl.PROTOCOL_TLSv1_2)
         self.client.username_pw_set(mqtt_username, mqtt_password)
         self.client.message_callback_add(mqtt_update_topic_name, self._on_message)
+        self.client.reconnect_delay_set(min_delay=1, max_delay=120)
         # self.client.on_log = lambda client, userdata, level, buf: print(buf)
         self.client.on_connect = self._on_connect
 
