@@ -35,7 +35,7 @@ class MenuIcon:
     
     def _create_image(self):
         # Generate an image for the icon
-        image = Image.new('RGB', (64, 64), "blue")
+        image = Image.new('RGB', (64, 64), "cyan")
         ImageDraw.Draw(image)
         return image
 
