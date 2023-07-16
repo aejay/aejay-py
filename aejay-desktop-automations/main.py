@@ -1,22 +1,11 @@
 import os
-import platform
 from credential_management import CredentialManager
 from screen_management import Funkifier, FunkyState
 from state_management import StateManager, RemoteState, ProductivityTask
 from ui import MenuIcon
 
 def main():
-    os_type: str = platform.system()
-    funkifier: Funkifier
-    if os_type == 'Windows':
-        from screen_management import WindowsFunkifier
-        funkifier = WindowsFunkifier()
-    elif os_type == 'Darwin':
-        from screen_management import MacFunkifier
-        funkifier = MacFunkifier()
-    else:
-        raise NotImplementedError(f'OS {os_type} not supported.')
-    
+    funkifier = Funkifier()
     funkifier.start()
     
     mqtt_url = os.environ.get("AEJAY_MQTT_URL") or ""
