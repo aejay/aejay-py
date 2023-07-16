@@ -1,5 +1,6 @@
 from paho.mqtt import client as mqtt
 from typing import Callable
+from datetime import datetime, timedelta
 import ssl
 from .RemoteState import RemoteState
 
@@ -36,9 +37,16 @@ class StateManager:
         properties: mqtt.Properties | None
     ) -> None:
         if rc == 0:
-            print("Connected to MQTT broker")
-            client.subscribe(self.mqtt_update_topic_name)
-            client.publish(self.mqtt_request_topic_name)
+            if "session present" in flags.keys():
+                session_present = flags.get("session present")
+                if session_present == 1:
+                    print("Connected to MQTT broker with existing session")
+                else:
+                    print(f"Connected to MQTT broker with session: {session_present}")
+            else:
+                print("Connected to MQTT broker with new session")
+                client.subscribe(self.mqtt_update_topic_name)
+                client.publish(self.mqtt_request_topic_name)
         else:
             print(f"Connection to MQTT failed with result {rc}")
 
