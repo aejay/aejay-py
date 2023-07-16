@@ -1,4 +1,5 @@
 import os
+import atexit
 from credential_management import CredentialManager
 from screen_management import Funkifier, FunkyState
 from state_management import StateManager, RemoteState, ProductivityTask
@@ -49,6 +50,13 @@ def main():
         on_update=mqtt_change_handler
     )
     state_manager.Start()
+
+    def cleanup_icon():
+        if menu.icon._running:
+            menu.icon.stop()
+        pass
+
+    atexit.register(cleanup_icon)
 
     menu.icon.run()
 
