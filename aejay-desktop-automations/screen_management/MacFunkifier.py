@@ -37,4 +37,4 @@ class MacFunkifier(Funkifier):
 
           subprocess.run(['osascript', '-e', applescript])
           if self._has_brightness:
-            subprocess.run(['brightness', '-m', '0.1'])
+            subprocess.run(['brightness', '-m', '0.05'])
