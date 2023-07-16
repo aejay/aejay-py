@@ -18,7 +18,6 @@ class MacFunkifier(Funkifier):
           applescript = """
           tell application "System Events"
               tell appearance preferences
-                  set high contrast to false
                   set dark mode to true
               end tell
           end tell
@@ -32,7 +31,6 @@ class MacFunkifier(Funkifier):
           tell application "System Events"
               tell appearance preferences
                   set dark mode to false
-                  set high contrast to true
               end tell
           end tell
           """
