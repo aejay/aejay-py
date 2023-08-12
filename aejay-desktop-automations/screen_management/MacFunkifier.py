@@ -5,7 +5,7 @@ from .FunkyState import FunkyState
 
 class MacFunkifier(Funkifier):
     def __init__(self):
-        self._has_brightness = not shutil.which('brightness') is None
+        self._brightness_path = shutil.which('brightness') or shutil.which('/usr/local/bin/brightness')
 
     def start(self):
        pass
@@ -24,9 +24,9 @@ class MacFunkifier(Funkifier):
           """
 
           subprocess.run(['osascript', '-e', applescript], stdout=subprocess.DEVNULL)
-          if self._has_brightness:
+          if self._brightness_path is not None:
             # This thing is pretty chatty about not being able to update the non-internal display
-            subprocess.run(['brightness', '-v', '0.05'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            subprocess.run([self._brightness_path, '-v', '0.05'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         else:
           applescript = """
           tell application "System Events"
@@ -37,6 +37,6 @@ class MacFunkifier(Funkifier):
           """
 
           subprocess.run(['osascript', '-e', applescript], stdout=subprocess.DEVNULL)
-          if self._has_brightness:
+          if self._brightness_path is not None:
             # This thing is pretty chatty about not being able to update the non-internal display
-            subprocess.run(['brightness', '-v', '0.8'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            subprocess.run([self._brightness_path, '-v', '0.8'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
