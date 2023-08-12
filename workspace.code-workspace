@@ -18,7 +18,11 @@
       "**/Thumbs.db": true,
       "**/node_modules": true,
       "**/__pycache__": true,
-      "**/venv": true
+      "**/venv": true,
+      "**/.venv": true,
+      "**/build": true,
+      "**/dist": true,
+      "**/.eggs": true
     }
   }
 }

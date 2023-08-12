@@ -1,6 +1,7 @@
 import platform
 from typing import Optional, TypedDict, cast
 from .Credentials import Credentials
+import keyring
 
 class WindowsCredentialsDict(TypedDict):
     UserName: str
@@ -30,7 +31,6 @@ class CredentialManager:
 
 
     def _get_mac_credentials(self, cred_name: str) -> Credentials:
-        import keyring
         username = keyring.get_password(cred_name, 'username')
         if username is None:
             raise Exception("cred username not found")

@@ -1,6 +1,6 @@
 import pprint
 from paho.mqtt import client as mqtt
-from typing import Callable
+from typing import Callable, Union
 from datetime import datetime, timedelta
 import ssl
 from .RemoteState import RemoteState
@@ -36,7 +36,7 @@ class StateManager:
         userdata: object,
         flags: dict,
         rc: mqtt.ReasonCodes,
-        properties: mqtt.Properties | None
+        properties: Union[mqtt.Properties, None]
     ) -> None:
         if rc == 0:
             session_present = flags.get("session present")
