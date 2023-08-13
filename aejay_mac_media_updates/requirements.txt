@@ -1,0 +1,7 @@
+importlib-metadata==6.8.0
+jaraco.classes==3.2.3
+keyring==24.2.0
+more-itertools==9.1.0
+paho-mqtt==1.6.1
+pyrsistent==0.19.3
+zipp==3.15.0
