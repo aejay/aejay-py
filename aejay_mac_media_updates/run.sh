@@ -8,4 +8,5 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 [[ -f ~/.zshrc ]] && source ~/.zshrc
 
 # Call your Python script, using a relative path
-"$SCRIPT_DIR/dist/main" "$@"
+# poetry run python $SCRIPT_DIR/main.py "$@"
+"$SCRIPT_DIR/dist/main/main" "$@"

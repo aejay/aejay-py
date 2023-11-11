@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "aejay-py"
+version = "0.1.0"
+description = ""
+authors = ["Aejay Goehring <aejay.goehring@gmail.com>"]
+readme = "README.md"
+packages = [
+  {include = "aejay_desktop_automations"},
+  {include = "aejay_mac_media_updates"},
+  {include = "aejay_mac_headset_volume"},
+]
+
+[tool.poetry.scripts]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+paho-mqtt = "^1.6.1"
+pyrsistent = "^0.19.3"
+keyring = "^24.2.0"
+pystray = "^0.19.5"
+pyobjc = "^10.0"
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^6.1.0"
+black = "^23.10.0"
+pylint = "^3.0.1"
+pyright = "^1.1.332"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
